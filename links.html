@@ -3,78 +3,42 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dandy Buzzkills: Links</title>
-  <style>
-    body {
-      background-color: black;
-      color: #ffcc99;
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-      padding: 20px;
-    }
-
-    a {
-      color: yellow;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-
-    .content-box {
-      border: 12px outset #888888;
-      margin: 0 auto;
-      width: 95%;
-      max-width: 660px;
-      background-color: black;
-      padding: 20px;
-    }
-
-    h1 {
-      color: yellow;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    ul.links {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul.links li {
-      margin: 15px 0;
-      font-size: 18px;
-    }
-
-    ul.links li a {
-      display: inline-block;
-      background-color: #222;
-      padding: 10px 20px;
-      border: 2px ridge #666;
-      color: yellow;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
-
-    ul.links li a:hover {
-      background-color: yellow;
-      color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/master.css">
+  <link rel="stylesheet" href="styles/links.css">
 </head>
 <body>
   <h1>The Dandy Buzzkills: Links</h1>
   <div class="content-box">
-    <p style="font-style: italic; font-size: 14px; color: #996666; margin-bottom: 20px;">
-  The following links have been approved by the high and mighty. Viewer discretion is advised.
-</p>
-<ul class="links">
-      <li><a href="https://open.spotify.com/artist/42Zhe6DE489dOCoNvkIYsO?si=2dEXLI8PSI-16O9KVb_ANw" target="_blank">Spotify</a></li>
-      <li><a href="https://www.instagram.com/thedandybuzzkills/" target="_blank">Instagram</a></li>
-      <li><a href="https://dandybuzzkills.bandcamp.com" target="_blank">Bandcamp</a></li>
-      <li><a href="https://soundcloud.com/user-497085593/the-moth-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">SoundCloud</a></li>
-      <li><a href="https://www.youtube.com/watch?v=mzVI9nzc1jE&list=PLyAj1Pl9mCD0-uvTnhGXqxjU77YuSKL8n" target="_blank">YouTube</a></li>
-      <li><a href="#" onclick="alert('Coming soon: Live-streamed worm feeding ritual.')">Live Worm Feed</a></li>
-</ul>
+    <p class="muted-lead">The following links have been approved by the high and mighty. Viewer discretion is advised.</p>
+
+    <div class="links-grid">
+      <a class="link-card" href="https://thedandybuzzkills.bandcamp.com" target="_blank">
+        <div class="icon">💿</div>
+        <div class="meta"><div class="title">Bandcamp</div><div class="desc">♡ Support us ♡</div></div>
+      </a>
+
+      <a class="link-card" href="https://open.spotify.com/artist/42Zhe6DE489dOCoNvkIYsO?si=2dEXLI8PSI-16O9KVb_ANw" target="_blank">
+        <div class="icon"><img src="images/devil.jpg" alt="Spotify"></div>
+        <div class="meta"><div class="title">Spotify</div><div class="desc">Make number go bigger</div></div>
+      </a>
+
+      <a class="link-card" href="https://www.instagram.com/thedandybuzzkills/" target="_blank">
+        <div class="icon">📷</div>
+        <div class="meta"><div class="title">Instagram</div><div class="desc">Be the first to know?</div></div>
+      </a>
+
+      <a class="link-card" href="https://www.youtube.com/watch?v=mzVI9nzc1jE&list=PLyAj1Pl9mCD0-uvTnhGXqxjU77YuSKL8n" target="_blank">
+        <div class="icon">▶</div>
+        <div class="meta"><div class="title">YouTube</div><div class="desc">Videos & live footage</div></div>
+      </a>
+
+      <a class="link-card" href="images/worms-creepy.gif" target="_blank" id="liveWorm">
+        <div class="icon">🐛</div>
+        <div class="meta"><div class="title">Live Worm Feed</div><div class="desc">Ritual scheduling</div></div>
+      </a>
+    </div>
   </div>
+  <!-- Live Worm Feed opens the creepy worms GIF in a new tab -->
   <p><a href="index.html">Return to Homepage</a></p>
 </body>
 </html>

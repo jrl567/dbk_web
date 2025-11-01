@@ -3,129 +3,68 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dandy Buzzkills: Biographies</title>
-  <style>
-    body {
-      background-color: black;
-      color: #ffcc99;
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-      padding: 20px;
-    }
-
-    a {
-      color: yellow;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-
-    .content-box {
-      border: 12px outset #888888;
-      margin: 0 auto;
-      width: 95%;
-      max-width: 900px;
-      background-color: black;
-      padding: 20px;
-    }
-
-    h1 {
-      color: yellow;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .bio {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      background-color: #111;
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .bio img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border: 2px solid white;
-      margin-bottom: 10px;
-    }
-
-    .bio h2 {
-      color: yellow;
-      font-size: 24px;
-      margin: 10px 0 5px;
-    }
-
-    .bio p {
-      font-size: 14px;
-      color: #ffcc99;
-    }
-
-    @media (max-width: 600px) {
-  .bio-grid {
-    grid-template-columns: 1fr;
-  }
-  .content-box {
-    flex-direction: column !important;
-    align-items: center;
-  }
-  .content-box > div {
-    width: 100%;
-    max-width: 100%;
-  }
-  .bio {
-    width: 100%;
-    max-width: 100%;
-  }
-  .bio img {
-    width: 100%;
-    height: auto;
-  }
-}
-    
-  </style>
+  <link rel="stylesheet" href="styles/master.css">
+  <link rel="stylesheet" href="styles/biographies.css">
 </head>
 <body>
-  <h1>Meet The Buzzkills</h1>
-  <div class="content-box" style="margin-bottom: 30px; display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
-    <div style="flex: 1; min-width: 280px; max-width: 400px;">
-      <p style="text-align: left; font-size: 15px; line-height: 1.5;">
-        The Dandy Buzzkills are a hard band to define, and I think they prefer it that way. Drawing as much influence from Boris as they do XTC, the tight, densely packed sound of the group has drawn well-deserved attention from crowds captivated by meticulously crafted recordings and a live show that is as shambolic as it is powerful.<br><br>
-        Since the release of <em>I Wanna...</em> in 2021, the band has gained and lost several members, redefined its sound, and thrown enough bananas into the crowd to keep the potassium levels in Adelaide, South Australia at an all-time high. With the release of their debut EP <em>I Can Feed The Fish Earthworms</em>, Maxwell, Hudson, and co. captured with great care their unique sound, the songs rich with texture and hidden detail, the EP only truly reveals itself after several listens.<br><br>
-        The band now finds itself embarking on an ambitious release schedule of new material into 2025, not focussing on social media engagement, but on enhancing their craft and offering something you can’t find in most corners of the Australian music scene — that being an attention to detail and genuine care for their music, all while not taking themselves seriously and keeping people (the writer of this bio included) scratching their heads, wondering what comes next for The Dandy Buzzkills.<br><br>
-        <em>– Angus Porter</em>
+  <header class="page-header">
+    <h1>Meet The Buzzkills</h1>
+    <p class="lead">Four boys, one band.</p>
+  </header>
+
+  <main class="biographies-main content-box ">
+    <section class="bio-grid" aria-label="Band members">
+      <article class="bio">
+        <img src="images/maxwell.jpg" alt="Maxwell Adair">
+        <div class="bio-body">
+          <h2>Maxwell "Cum Guzzler" Adair</h2>
+          <p class="role">Lead guitarist & part-time philosopher</p>
+          <p class="short">Compulsive arbiter.</p>
+        </div>
+      </article>
+
+      <article class="bio">
+        <img src="images/james.jpg" alt="James Declan">
+        <div class="bio-body">
+          <h2>James "Cum Guzzler" Declan</h2>
+          <p class="role">Drummer</p>
+          <p class="short">Herbal tea propagandist & Hudson adorist.</p>
+        </div>
+      </article>
+
+      <article class="bio">
+        <img src="images/jack.jpg" alt="Jack Larkin">
+        <div class="bio-body">
+          <h2>Jack "Cum Guzzler" Larkin</h2>
+          <p class="role">Bass player</p>
+          <p class="short">Keeper of keys and grounds at Hogwarts.</p>
+        </div>
+      </article>
+
+      <article class="bio">
+        <img src="images/hudson.jpg" alt="Hudson Adair">
+        <div class="bio-body">
+          <h2>Hudson "Hmmm" Adair</h2>
+          <p class="role">Amateur beekeeper.</p>
+          <p class="short">Has never lost a staring contest.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="bio-long">
+      <p>
+        The Dandy Buzzkills are a hard band to define, and I think they prefer it that way. Drawing as much influence from Boris as they do XTC, the tight, densely packed sound of the group has drawn well-deserved attention from crowds captivated by meticulously crafted recordings and a live show that is as shambolic as it is powerful.
       </p>
-    </div>
-  <div style="flex: 1.5; min-width: 320px;">
-    <div class="bio-grid">
-      <div class="bio" style="box-sizing: border-box; width: 100%; display: flex; flex-direction: column; align-items: center;">
-        <img src="images/maxwell.jpg" alt="Band Member" style="box-sizing: border-box; max-width: 100%; height: auto;">
-        <h2>Maxwell "Cum Guzzler" Adair</h2>
-        <p>Lead guitarist and part-time philosopher. Enjoys feedback, constructive or otherwise.</p>
-      </div>
-      <div class="bio">
-        <img src="images/james.jpg" alt="Band Member 2">
-        <h2>James "Cum Guzzler" Declan</h2>
-        <p>Drummer, herbal tea propagandist, and self-proclaimed theoretical theorist. Hudson adorist.</p>
-      </div>
-      <div class="bio">
-        <img src="images/jack.jpg" alt="Band Member 3">
-        <h2>Jack "Cum Guzzler" Larkin</h2>
-        <p>Bass player, keeper of keys and grounds at Hogwarts.</p>
-      </div>
-      <div class="bio">
-        <img src="images/hudson.jpg" alt="Band Member 4">
-        <h2>Hudson "Hmmm" Adair</h2>
-        <p>Amateur beekeeper. Has never lost a staring contest.</p>
-      </div>
-    </div>
-</div>
-</div>
-<p><a href="index.html">Return to Homepage</a></p>
+      <p>
+        Since the release of <em>I Wanna...</em> in 2021, the band has gained and lost several members, redefined its sound, and thrown enough bananas into the crowd to keep the potassium levels in Adelaide, South Australia at an all-time high. With the release of their debut EP <em>I Can Feed The Fish Earthworms</em>, Maxwell, Hudson, and co. captured with great care their unique sound, the songs rich with texture and hidden detail, the EP only truly reveals itself after several listens.
+      </p>
+      <p>
+        The band now finds itself embarking on an ambitious release schedule of new material into 2025, not focussing on social media engagement, but on enhancing their craft and offering something you can’t find in most corners of the Australian music scene — that being an attention to detail and genuine care for their music, all while not taking themselves seriously and keeping people (the writer of this bio included) scratching their heads, wondering what comes next for The Dandy Buzzkills.
+      </p>
+      <p class="credit"><em>– Angus Porter</em></p>
+    </section>
+  </main>
+
+  <p class="footer"><a href="index.html">Return to Homepage</a></p>
 </body>
 </html>

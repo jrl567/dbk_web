@@ -3,40 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dandy Buzzkills: Contact</title>
-  <style>
-    body {
-      background-color: black;
-      color: #ffcc99;
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .content-box {
-      border: 12px outset #888888;
-      margin: 0 auto;
-      width: 95%;
-      max-width: 660px;
-      background-color: black;
-      padding: 20px;
-    }
-    input, textarea, button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border: 2px ridge #666;
-      background-color: #111;
-      color: yellow;
-      font-family: 'Times New Roman', serif;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: yellow;
-      color: black;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/master.css">
+  <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
   <h1>Contact The Dandy Buzzkills</h1>
@@ -53,6 +21,22 @@
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const form = e.target;
+      const name = form.name?.value || '';
+      const email = form.email?.value || '';
+      const message = form.message?.value || '';
+
+      // Store the values in sessionStorage so they are available on the next pages
+      try {
+        sessionStorage.setItem('contact_name', name);
+        sessionStorage.setItem('contact_email', email);
+        sessionStorage.setItem('contact_message', message);
+      } catch (err) {
+        // ignore storage errors
+        console.warn('sessionStorage unavailable:', err);
+      }
+
+      // Continue the existing flow
       window.location.href = 'interrogation.html';
     });
   </script>

@@ -1,0 +1,134 @@
+.nav-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+.nav-item {
+  flex: 1;
+  font-size: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  color: yellow;
+}
+.nav-image {
+  flex: 2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+}
+.nav-image img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.highlight {
+  font-size: 28px;
+  color: yellow;
+}
+.subtitle {
+  font-size: 22px;
+  font-style: italic;
+  color: #996666;
+}
+.visitor-count {
+  color: #00ffff;
+  font-weight: bold;
+}
+.footer {
+  font-size: 12px;
+  margin-top: 20px;
+  color: white;
+}
+
+.image-center {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .nav-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Mobile-only tweaks: do not affect desktop layout */
+@media (max-width: 420px) {
+  .nav-item { font-size: 18px; padding: 12px; }
+  .nav-image { padding: 8px; }
+  .highlight { font-size: 22px; }
+  .visitor-count { font-size: 14px; }
+
+  /* Make hommus widget less intrusive on small screens */
+  .hommus-widget { position: fixed; right: 12px; bottom: 12px; }
+  .hommus-widget img { width:48px; height:48px; }
+  .hommus-widget p { font-size: 11px; }
+
+  /* Reduce welcome overlay text size on small phones */
+  #welcome-overlay { font-size: 16px; padding: 12px; }
+  #welcome-overlay button { font-size: 18px; padding: 8px 14px; }
+}
+
+#welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(180, 0, 0, 0.95);
+  color: #ffcc99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-size: 18px;
+  padding: 20px;
+}
+#welcome-overlay button {
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: 2px outset #888;
+  background: black;
+  color: yellow;
+  font-family: 'Times New Roman', serif;
+  cursor: pointer;
+}
+.hommus-widget {
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+  animation: pulse 1s infinite ease-in-out;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.hommus-widget img {
+  width: 60px;
+  height: 60px;
+  border: 2px outset #888;
+  cursor: pointer;
+}
+
+.hommus-widget p {
+  color: #ffcc99;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,25 @@
+
+    .alert {
+      font-size: 24px;
+      color: yellow;
+      margin-bottom: 20px;
+    }
+    .email {
+      font-size: 16px;
+      margin-top: 20px;
+      color: #ffcc99;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #222;
+      border: 2px ridge #666;
+      color: yellow;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a.button:hover {
+      background: yellow;
+      color: black;
+    }

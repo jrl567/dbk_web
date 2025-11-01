@@ -3,200 +3,52 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dandy Buzzkills Homepage</title>
-  <style>
-    body {
-      background-color: black;
-      color: #ffcc99;
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-    }
-
-    a {
-      color: yellow;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-
-    hr {
-      border: none;
-      border-top: 2px ridge #666666;
-      margin: 20px auto;
-      width: 90%;
-    }
-
-    .content-box {
-      border: 12px outset #888888;
-      margin: 0 auto;
-      width: 95%;
-      max-width: 660px;
-      background-color: black;
-      padding: 10px;
-    }
-
-    .nav-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .nav-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: nowrap;
-    }
-
-    .nav-item {
-      flex: 1;
-      font-size: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      color: yellow;
-    }
-
-    .nav-image {
-      flex: 2;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px;
-    }
-
-    .nav-image img {
-      width: 100%;
-      height: auto;
-      border: 2px solid #fff;
-      box-sizing: border-box;
-    }
-
-    .highlight {
-      font-size: 28px;
-      color: yellow;
-    }
-
-    .subtitle {
-      font-size: 22px;
-      font-style: italic;
-      color: #996666;
-    }
-
-    .visitor-count {
-      color: #00ffff;
-      font-weight: bold;
-    }
-
-    .footer {
-      font-size: 12px;
-      margin-top: 20px;
-      color: white;
-    }
-
-    .image-center {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border: 2px solid #fff;
-      box-sizing: border-box;
-    }
-
-    @media (max-width: 600px) {
-      .nav-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
-      .hommus-widget {
-      position: absolute;
-      right: 20px;
-      bottom: 40px;
-      animation: pulse 1s infinite ease-in-out;
-      text-align: center;
-    }
-
-    .hommus-widget img {
-      width: 60px;
-      height: 60px;
-      border: 2px outset #888;
-    }
-
-    .hommus-widget p {
-      color: #ffcc99;
-      font-size: 10px;
-      margin-top: 4px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.15); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    #welcome-overlay {
-
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(180, 0, 0, 0.95);
-      color: #ffcc99;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      font-size: 18px;
-      padding: 20px;
-    }
-    #welcome-overlay button {
-      margin-top: 20px;
-      font-size: 20px;
-      padding: 10px 20px;
-      border: 2px outset #888;
-      background: black;
-      color: yellow;
-      font-family: 'Times New Roman', serif;
-      cursor: pointer;
-    }
-      .hommus-widget {
-      position: absolute;
-      right: 20px;
-      bottom: 40px;
-      animation: pulse 1s infinite ease-in-out;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-
-    .hommus-widget img {
-      width: 60px;
-      height: 60px;
-      border: 2px outset #888;
-      cursor: pointer;
-    }
-
-    .hommus-widget p {
-      color: #ffcc99;
-      font-size: 10px;
-      margin-top: 4px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.15); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    </style>
+  <link rel="stylesheet" href="styles/master.css">
+  <link rel="stylesheet" href="styles/index.css">
   <script>
+    // Show the welcome overlay at most once per browser session, and
+    // only when the user arrives from outside the site (not from another
+    // internal page). Uses sessionStorage to remember that we've shown it.
     window.addEventListener('load', function () {
-      const overlay = document.createElement('div');
-      overlay.id = 'welcome-overlay';
-      overlay.innerHTML = `
-        <div>
-          <p><strong>Welcome to The Dandy Republic.</strong></p>
-          <p>By entering this site, you agree to relinquish all property to the common good of the people.</p>
-          <button onclick="document.getElementById('welcome-overlay').remove()">Enter</button>
-        </div>
-      `;
-      document.body.appendChild(overlay);
+      try {
+        const alreadyShown = sessionStorage.getItem('welcome_overlay_shown');
+        // Determine whether the referrer is same-origin (an internal navigation)
+        let refIsInternal = false;
+        if (document.referrer) {
+          try {
+            const refUrl = new URL(document.referrer);
+            refIsInternal = refUrl.origin === location.origin;
+          } catch (e) {
+            refIsInternal = false;
+          }
+        }
+
+        // Only show overlay when NOT already shown and NOT an internal navigation
+        if (!alreadyShown && !refIsInternal) {
+          const overlay = document.createElement('div');
+          overlay.id = 'welcome-overlay';
+          overlay.innerHTML = `
+            <div>
+              <p><strong>Welcome to The Dandy Republic.</strong></p>
+              <p>By entering this site, you agree to relinquish all property to the common good of the people.</p>
+              <button id="welcome-enter">Enter</button>
+            </div>
+          `;
+          document.body.appendChild(overlay);
+
+          // Mark as shown so it won't appear again this session
+          try { sessionStorage.setItem('welcome_overlay_shown', '1'); } catch (e) { /* ignore */ }
+
+          // Hook the button to remove overlay
+          document.getElementById('welcome-enter').addEventListener('click', function () {
+            const el = document.getElementById('welcome-overlay');
+            if (el) el.remove();
+          });
+        }
+      } catch (err) {
+        // if anything goes wrong, fail silently (no overlay)
+        console.warn('welcome overlay logic error', err);
+      }
     });
   </script>
 </head>
@@ -205,7 +57,7 @@
 
   <hr>
 
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 95%; margin: 0 auto; flex-wrap: wrap; gap: 10px;">
+  <div class="banner" style="display: flex; justify-content: space-between; align-items: center; max-width: 95%; margin: 0 auto; flex-wrap: wrap; gap: 10px;">
     <img src="images/banana.gif" alt="Banana Left" width="40" height="40">
     <p style="margin: 0;">You're visitor # <span class="visitor-count">
       <script type="text/javascript" src="https://counter.websiteout.com/js/2/4/12/0"></script>

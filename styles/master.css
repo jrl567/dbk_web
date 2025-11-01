@@ -1,0 +1,65 @@
+/* ===== Global theme & primitives ===== */
+:root{
+  --bg: #000;
+  --fg: #ffcc99;
+  --accent: yellow;
+  --panel: #111;
+  --rule: #666;
+  --muted-border: rgba(255,255,255,0.1);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  height:100%;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family: "Times New Roman", serif;
+  text-align:center;
+  padding:20px;
+}
+
+/* Type */
+h1{
+  color:var(--accent);
+  font-size:32px;
+  margin:0 0 20px;
+}
+
+a{
+  color:var(--accent);
+  text-decoration:underline;
+  font-weight:bold;
+}
+
+/* Rules / separators */
+hr{
+  border:0;
+  border-top:2px ridge var(--rule);
+  margin:20px auto;
+  width:90%;
+}
+
+/* Generic content box used across pages */
+.content-box{
+  border:12px outset #888;
+  margin:0 auto 30px;
+  width:min(95%, 660px);
+  background:var(--bg);
+  padding:10px;
+}
+
+/* Generic interactive affordance */
+button:hover{
+  background:var(--accent);
+  color:#000;
+  cursor:pointer;
+}
+
+.footer{
+    padding: 20px;
+}

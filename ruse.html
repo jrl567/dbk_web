@@ -3,54 +3,56 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dandy Buzzkills: The Ruse</title>
-  <style>
-    body {
-      background-color: black;
-      color: #ffcc99;
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    .content-box {
-      border: 12px outset #888888;
-      margin: 0 auto;
-      width: 95%;
-      max-width: 600px;
-      background-color: black;
-      padding: 30px;
-    }
-    .alert {
-      font-size: 24px;
-      color: yellow;
-      margin-bottom: 20px;
-    }
-    .email {
-      font-size: 16px;
-      margin-top: 20px;
-      color: #ffcc99;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
-      background: #222;
-      border: 2px ridge #666;
-      color: yellow;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    a.button:hover {
-      background: yellow;
-      color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/master.css">
+  <link rel="stylesheet" href="styles/ruse.css">
 </head>
 <body>
   <div class="content-box">
     <div class="alert">It was all a ruse.</div>
-    <p>Please remain seated. If you wish to contact us, send an email to:</p>
+    <p>Please remain seated. If you wish to contact us, copy your message and send an email to:</p>
     <div class="email">dandybuzzkills@gmail.com</div>
-    <a href="index.html" class="button">Return Home</a>
+    <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#" id="copyMessageBtn" class="button">Copy message</a>
+      <a href="index.html" class="button">Return Home</a>
+    </div>
   </div>
+  <div style="text-align:center; margin-top:8px; color:var(--fg); font-size:14px;" id="copyFeedback" aria-live="polite"></div>
+
+  <script>
+    async function copyText(text) {
+      if (!text) return false;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } else {
+          // Fallback using textarea
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          return ok;
+        }
+      } catch (err) {
+        return false;
+      }
+    }
+
+    document.getElementById('copyMessageBtn').addEventListener('click', async function(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('copyFeedback');
+      const message = sessionStorage.getItem('contact_message') || '';
+      if (!message) {
+        feedback.textContent = 'No message found to copy.';
+        return;
+      }
+      const success = await copyText(message);
+      feedback.textContent = success ? 'Message copied to clipboard.' : 'Failed to copy message.';
+      setTimeout(() => { feedback.textContent = ''; }, 3000);
+    });
+  </script>
 </body>
 </html>

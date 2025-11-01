@@ -1,0 +1,72 @@
+/* ===== Biographies page (modern rewrite) ===== */
+
+/* Page header */
+.page-header{
+  text-align:center;
+  margin:20px auto 12px;
+}
+.page-header h1{ margin:0; font-size:36px; color:var(--accent); }
+.page-header .lead{ margin:8px 0 0; color:var(--fg); opacity:0.9; }
+
+/* Main wrapper — centered with a comfortable max width */
+.biographies-main{
+  width: min(95%, 1100px);
+  max-width: 1100px;
+  margin:18px auto;
+  padding:18px;
+}
+
+/* Responsive card grid: 2 columns on desktop, 1 column on small screens */
+.bio-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap:20px;
+  align-items:start;
+}
+
+.bio{
+  background:var(--panel);
+  border:1px solid var(--muted-border);
+  padding:16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.bio img{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  flex:0 0 140px;
+  border:3px solid #fff;
+}
+
+.bio-body{ text-align:left; }
+.bio-body h2{ margin:0 0 6px; font-size:20px; color:var(--accent); }
+.bio-body .role{ font-size:14px; opacity:0.9; margin:0 0 6px; }
+.bio-body .short{ margin:0; font-size:15px; }
+
+.bio-long{
+  margin-top:26px;
+  padding:12px 6px;
+  text-align:center;
+  color:var(--fg);
+  line-height:1.6;
+}
+.bio-long p{ max-width:min(70%, 700px); margin: 0 auto 12px; }
+.bio-long .credit{ margin-top:6px; }
+
+/* Responsive tweaks */
+@media (max-width:800px){
+  .bio-grid{ grid-template-columns:1fr; }
+  .bio{ flex-direction:row; }
+  .bio img{ width:120px; height:120px; flex:0 0 120px; }
+  
+}
+
+@media (max-width:480px){
+  .page-header h1{ font-size:28px; }
+  .bio{ flex-direction:row; gap:10px; padding:12px; }
+  .bio img{ width:96px; height:96px; flex:0 0 96px; }
+  .bio-body h2{ font-size:18px; }
+}

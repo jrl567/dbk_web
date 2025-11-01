@@ -1,0 +1,17 @@
+/* Mobile-friendly tweaks for hummus.html (does not change desktop layout)
+   Applied only on small viewports. */
+
+@media (max-width: 700px) {
+  body {
+    font-family: 'Times New Roman', serif;
+    padding: 12px;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+
+  h1 { font-size: 24px; }
+  h2 { font-size: 18px; margin-top: 14px; }
+
+  ul, ol { padding-left: 20px; }
+  li { margin: 8px 0; }
+}

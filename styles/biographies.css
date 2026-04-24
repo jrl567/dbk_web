@@ -16,21 +16,31 @@
   padding:18px;
 }
 
-/* Responsive card grid: 2 columns on desktop, 1 column on small screens */
+/* Responsive card grid: 3 cards top row, 2 centred underneath */
 .bio-grid{
   display:grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap:20px;
   align-items:start;
 }
 
 .bio{
+  grid-column: span 2;
   background:var(--panel);
   border:1px solid var(--muted-border);
   padding:16px;
   display:flex;
   gap:12px;
   align-items:center;
+}
+
+/* Centre the last two cards */
+.bio:nth-child(4){
+  grid-column: 2 / span 2;
+}
+
+.bio:nth-child(5){
+  grid-column: 4 / span 2;
 }
 
 .bio img{
@@ -58,10 +68,25 @@
 
 /* Responsive tweaks */
 @media (max-width:800px){
-  .bio-grid{ grid-template-columns:1fr; }
-  .bio{ flex-direction:row; }
-  .bio img{ width:120px; height:120px; flex:0 0 120px; }
-  
+  .bio-grid{
+    grid-template-columns:1fr;
+  }
+
+  .bio,
+  .bio:nth-child(4),
+  .bio:nth-child(5){
+    grid-column:auto;
+  }
+
+  .bio{
+    flex-direction:row;
+  }
+
+  .bio img{
+    width:120px;
+    height:120px;
+    flex:0 0 120px;
+  }
 }
 
 @media (max-width:480px){
